@@ -1,47 +1,120 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package implementacao3;
 
-/**
- *
- * @author Hall-9000
- */
-public class ListaEncadeada implements ListaEncadeada_IF {
-
-    public ListaEncadeada() {
+public class ListaEncadeada implements ListaEncadeada_IF 
+{
+    private int dado;
+    private ListaEncadeada proximo;
+    
+    public ListaEncadeada() 
+    {
+        dado = -1;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        if(dado == -1)
+            return true;
+        else
+            return false;
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        if(isEmpty())
+            return 0;
+        else
+            return 1 + proximo.size();
     }
 
     @Override
     public int search(int element) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        if(isEmpty())
+            throw new Exception("Elemento não encontrado");
+        else
+            if(dado == element)
+                return dado;
+            else
+                return proximo.search(element);           
+    }
+    
+    //Metodo para inserir no Final
+    private void InserirNoFinal(int element)
+    {
+       if(isEmpty())
+        {
+            dado = element;
+            proximo = new ListaEncadeada();
+        }
+        else
+            proximo.insert(element); 
     }
 
+    //Metodo para inserir no Inicio
+    public void InserirNoInicio(int element)
+    {
+        if(isEmpty())
+        {
+            dado = element;
+            proximo = new ListaEncadeada();
+        }
+        else
+        {
+            ListaEncadeada aux = new ListaEncadeada();
+            aux.dado = dado;
+            aux.proximo = proximo;
+            dado = element;
+            proximo = aux;          
+        }
+    }
+    
     @Override
     public void insert(int element) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        //Professor criei metodos auxiliar para poder alternar entrer inserir no Inicio e no Final
+        InserirNoInicio(element);
     }
 
     @Override
     public void remove(int element) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        if(isEmpty())
+        {} 
+        else
+        {
+           if(dado == element)
+           {
+               dado = proximo.dado;
+               proximo = proximo.proximo;
+           }     
+           else
+               proximo.remove(element);
+        }
     }
-
+    
+    private void AdicionarNoArray(int[] array, int elemento)
+    {
+        for(int i=0; i<array.length; i++)
+        {
+            if(array[i] == 0)
+            {
+                array[i] = elemento;
+                break;
+            }           
+        }
+    }
+    
+    private void CriarLista(int[] array, ListaEncadeada nova)
+    {
+       if(!nova.isEmpty())
+       {
+           AdicionarNoArray(array, nova.dado);
+           CriarLista(array, nova.proximo);
+       }       
+    }
+    
     @Override
     public int[] toArray() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        int[] resultado = new int[size()];
+        CriarLista(resultado, this);
+        return resultado;
     }
     
 }
