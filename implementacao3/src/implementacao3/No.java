@@ -13,6 +13,7 @@ class No
     public No()
     {
         this.proximo = null;
+        this.dado = -1;
     }
     
     public int getDado() {
