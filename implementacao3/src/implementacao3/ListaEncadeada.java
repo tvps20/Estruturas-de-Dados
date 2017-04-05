@@ -93,7 +93,7 @@ public class ListaEncadeada implements ListaEncadeada_IF
     {
         for(int i=0; i<array.length; i++)
         {
-            if(array[i] == 0)
+            if(array[i] == 0) //Corrigir isso, se o tiver um elemento 0 inserido, vai da problema.
             {
                 array[i] = elemento;
                 break;
