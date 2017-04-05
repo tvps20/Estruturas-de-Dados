@@ -57,7 +57,7 @@ public class ListaEncadeada implements ListaEncadeada_IF
             dado = element;
             proximo = new ListaEncadeada();
         }
-        else
+        else //conferir, ta adicionando no 2 lugar
         {
             ListaEncadeada aux = new ListaEncadeada();
             aux.dado = dado;
