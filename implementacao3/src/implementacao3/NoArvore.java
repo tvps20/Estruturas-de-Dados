@@ -1,6 +1,6 @@
 package implementacao3;
 
-public class NoArvore 
+public class NoArvore implements Comparable<NoArvore>
 {
     private int dado;
     private NoArvore esquerdo;
@@ -43,5 +43,14 @@ public class NoArvore
     public void setParente(NoArvore parente) {
         this.parente = parente;
     }
-    
+
+    @Override
+    public int compareTo(NoArvore o) {
+        
+        if(this.dado < o.dado)
+            return -1;
+        if(this.dado > o.dado)
+            return 1;
+        return 0;
+    }  
 }
