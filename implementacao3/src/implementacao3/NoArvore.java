@@ -3,9 +3,9 @@ package implementacao3;
 public class NoArvore 
 {
     private int dado;
-    private No esquerdo;
-    private No direito;
-    private No parente;
+    private NoArvore esquerdo;
+    private NoArvore direito;
+    private NoArvore parente;
 
     public int getDado() {
         return dado;
@@ -15,27 +15,27 @@ public class NoArvore
         this.dado = dado;
     }
 
-    public No getEsquerdo() {
+    public NoArvore getEsquerdo() {
         return esquerdo;
     }
 
-    public void setEsquerdo(No esquerdo) {
+    public void setEsquerdo(NoArvore esquerdo) {
         this.esquerdo = esquerdo;
     }
 
-    public No getDireito() {
+    public NoArvore getDireito() {
         return direito;
     }
 
-    public void setDireito(No direito) {
+    public void setDireito(NoArvore direito) {
         this.direito = direito;
     }
 
-    public No getParente() {
+    public NoArvore getParente() {
         return parente;
     }
 
-    public void setParente(No parente) {
+    public void setParente(NoArvore parente) {
         this.parente = parente;
     }
     
