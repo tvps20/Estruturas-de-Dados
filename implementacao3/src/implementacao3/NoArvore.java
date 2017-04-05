@@ -6,6 +6,11 @@ public class NoArvore
     private NoArvore esquerdo;
     private NoArvore direito;
     private NoArvore parente;
+    
+    public NoArvore(int _dado)
+    {
+        this.dado = _dado;
+    }
 
     public int getDado() {
         return dado;
