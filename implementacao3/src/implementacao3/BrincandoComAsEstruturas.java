@@ -72,7 +72,7 @@ public class BrincandoComAsEstruturas {
 		System.out.println(Arrays.toString(arvore1.preOrder()).equals(Arrays.toString(new int[]{8,4,2,1,3,6,5,7,12,10,9,11,14,13,15})));
 		System.out.println(Arrays.toString(arvore1.order()).equals(Arrays.toString(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15})));
 		System.out.println(Arrays.toString(arvore1.postOrder()).equals(Arrays.toString(new int[]{1,3,2,5,7,6,4,9,11,10,13,15,14,12,8})));
-
+                System.out.println();
 		
 		
 		System.out.println("Brincando com MaxHeap...");
@@ -113,7 +113,7 @@ public class BrincandoComAsEstruturas {
 		System.out.println(Arrays.toString(arvore2.preOrder()).equals(Arrays.toString(new int[]{15,14,13,8,3,7,4,6,12,10,2,9,11,1,5})));
 		System.out.println(Arrays.toString(arvore2.order()).equals(Arrays.toString(new int[]{8,13,3,14,4,7,6,15,2,10,9,12,1,11,5})));
 		System.out.println(Arrays.toString(arvore2.postOrder()).equals(Arrays.toString(new int[]{8,3,13,4,6,7,14,2,9,10,1,5,11,12,15})));
-
+                System.out.println();
 		
 		
 		System.out.println("Brincando com TabelaHash...");
