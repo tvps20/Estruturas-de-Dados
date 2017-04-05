@@ -1,33 +1,83 @@
 package implementacao3;
 
 public class BST implements ArvoreBinaria_IF {
-
+    
+    private NoArvore raiz;
+    private ListaEncadeada listaDeNos;
+    
     public BST() {
+        raiz = null;
+        listaDeNos = new ListaEncadeada();
     }
 
     @Override
     public void insert(int element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+        NoArvore pai = raiz;
+        NoArvore no = null;
+        
+        while(pai != null)
+        {
+            no = pai;
+            if(element < no.getDado())
+                pai = pai.getEsquerdo();
+            else
+                pai = pai.getDireito();
+        }
+               
+        if(raiz == null)
+            raiz = new NoArvore(element);
+        else
+            if(element < no.getDado())
+                no.setEsquerdo(new NoArvore(element));
+            else
+                no.setDireito(new NoArvore(element));
+    }  
+    
     @Override
     public int[] preOrder() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        preOrder(raiz);
+        return listaDeNos.toArray();
+    }
+    
+    public void ColocarNoArray(NoArvore _no)
+    {
+        listaDeNos.InserirNoInicio(_no.getDado());
+    }
+    
+    private int[] preOrder(NoArvore _no)
+    {
+        if(_no != null)
+        {
+            ColocarNoArray(_no);
+            preOrder(_no.getEsquerdo());
+            preOrder(_no.getDireito());
+        }
+        
+        return listaDeNos.toArray();
     }
 
     @Override
     public int[] order() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new int[1]; 
     }
 
     @Override
     public int[] postOrder() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean isComplete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new int[1]; 
     }
     
+   
+    
+    @Override
+    public boolean isComplete() {
+        return true; 
+    }
+    
+    //public int SizeArvore(NoArvore _no)
+    {
+       //if(_no != null)
+       {
+           
+       }      
+    }
 }
