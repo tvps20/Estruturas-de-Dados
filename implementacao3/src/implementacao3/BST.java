@@ -3,11 +3,9 @@ package implementacao3;
 public class BST implements ArvoreBinaria_IF {
     
     private NoArvore raiz;
-    private ListaEncadeada listaDeNos;
-    
+ 
     public BST() {
         raiz = null;
-        listaDeNos = new ListaEncadeada();
     }
 
     @Override
@@ -35,26 +33,9 @@ public class BST implements ArvoreBinaria_IF {
     
     @Override
     public int[] preOrder() {
-        preOrder(raiz);
-        return listaDeNos.toArray();
+        return new int[1];
     }
     
-    public void ColocarNoArray(NoArvore _no)
-    {
-        listaDeNos.InserirNoInicio(_no.getDado());
-    }
-    
-    private int[] preOrder(NoArvore _no)
-    {
-        if(_no != null)
-        {
-            ColocarNoArray(_no);
-            preOrder(_no.getEsquerdo());
-            preOrder(_no.getDireito());
-        }
-        
-        return listaDeNos.toArray();
-    }
 
     @Override
     public int[] order() {
