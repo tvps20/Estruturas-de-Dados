@@ -36,6 +36,12 @@ public class ListaEncadeada implements ListaEncadeada_IF
             else
                 return proximo.search(element);           
     }
+     
+    @Override
+    public void insert(int element) {
+        //Professor criei metodos auxiliar para poder alternar entrer inserir no Inicio e no Final
+        InserirNoInicio(element);
+    }
     
     //Metodo para inserir no Final
     private void InserirNoFinal(int element)
@@ -66,13 +72,7 @@ public class ListaEncadeada implements ListaEncadeada_IF
             proximo = aux;   
         }
     }
-    
-    @Override
-    public void insert(int element) {
-        //Professor criei metodos auxiliar para poder alternar entrer inserir no Inicio e no Final
-        InserirNoInicio(element);
-    }
-
+  
     @Override
     public void remove(int element) {
         if(isEmpty())
@@ -88,6 +88,22 @@ public class ListaEncadeada implements ListaEncadeada_IF
                proximo.remove(element);
         }
     }
+     
+    @Override
+    public int[] toArray() {
+        int[] resultado = new int[size()];
+        CriarLista(resultado, this);
+        return resultado;
+    }
+    
+    private void CriarLista(int[] array, ListaEncadeada nova)
+    {
+       if(!nova.isEmpty())
+       {
+           AdicionarNoArray(array, nova.dado);
+           CriarLista(array, nova.proximo);
+       }       
+    } 
     
     private void AdicionarNoArray(int[] array, int elemento)
     {
@@ -99,22 +115,5 @@ public class ListaEncadeada implements ListaEncadeada_IF
                 break;
             }           
         }
-    }
-    
-    private void CriarLista(int[] array, ListaEncadeada nova)
-    {
-       if(!nova.isEmpty())
-       {
-           AdicionarNoArray(array, nova.dado);
-           CriarLista(array, nova.proximo);
-       }       
-    }
-    
-    @Override
-    public int[] toArray() {
-        int[] resultado = new int[size()];
-        CriarLista(resultado, this);
-        return resultado;
-    }
-    
+    } 
 }
