@@ -80,17 +80,32 @@ public class BST implements ArvoreBinaria_IF {
     
     private int AuxParaCalcularAltura(NoArvore _raiz)
     {
-       if(_raiz == null)
+        if(_raiz == null)
            return -1; //Altura da arvore vazia
-       else
-       {
-           int AlturaEsquerda = AuxParaCalcularAltura(_raiz.getEsquerdo());
-           int AlturaDireiita = AuxParaCalcularAltura(_raiz.getDireito());
-           
-           if(AlturaEsquerda < AlturaDireiita)
-               return AlturaDireiita + 1;
-           else
-               return AlturaEsquerda + 1;
-       }
+
+        int AlturaEsquerda = AuxParaCalcularAltura(_raiz.getEsquerdo());
+        int AlturaDireita = AuxParaCalcularAltura(_raiz.getDireito());
+
+        if(AlturaEsquerda > AlturaDireita)
+            return AlturaEsquerda + 1;
+        else
+            return AlturaDireita + 1;
+       
+    }
+    
+    public int NumeroDeNos()
+    {
+        return AuxParaCalcularNumeroDeNos(raiz);
+    }
+    
+    private int AuxParaCalcularNumeroDeNos(NoArvore _raiz)
+    {
+        if(_raiz == null)
+            return 0;
+        
+        int numeroDeNosEsquerdo = AuxParaCalcularNumeroDeNos(_raiz.getEsquerdo());
+        int numeroDeNosDireito = AuxParaCalcularNumeroDeNos(_raiz.getDireito());
+        
+        return numeroDeNosEsquerdo + numeroDeNosDireito + 1;
     }
 }
