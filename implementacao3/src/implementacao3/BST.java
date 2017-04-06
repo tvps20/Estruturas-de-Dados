@@ -97,7 +97,7 @@ public class BST implements ArvoreBinaria_IF {
     
     @Override
     public boolean isComplete() {
-        //Se a quantidade de nos sem grau 2 for igual a 2^altura retorna verdadeiro
+        //Se a quantidade de nos sem grau 2(serão as folhas) for igual a 2^altura retorna verdadeiro
         //Pois para ser completa, apenas as folhas devem ter menos do q grau 2.
         if(ContarGraus(raiz) == (Math.pow(2, AlturaDaArvore())))
            return true;
