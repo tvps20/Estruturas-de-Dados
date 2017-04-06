@@ -33,27 +33,89 @@ public class BST implements ArvoreBinaria_IF {
     
     @Override
     public int[] preOrder() {
-        return new int[1];
+        int[] resultado = new int[NumeroDeNos()];
+        FazerPercursoPreOrder(resultado, raiz);
+        return resultado;
+    }
+    
+    private void FazerPercursoPreOrder(int[] array, NoArvore _no)
+    {
+        if(_no != null)
+        {
+            InserirNoArray(array, _no);
+            FazerPercursoPreOrder(array, _no.getEsquerdo());
+            FazerPercursoPreOrder(array, _no.getDireito());
+        }
+    }
+    
+    private void InserirNoArray(int[] array, NoArvore _no)
+    {
+        for(int i=0; i<array.length; i++)
+        {
+            if(array[i] == 0) //Corrigir isso, se o tiver um elemento 0 inserido, vai da problema.
+            {
+                array[i] = _no.getDado();
+                break;
+            }           
+        }
     }
     
 
     @Override
     public int[] order() {
-        return new int[1]; 
+        int[] resultado = new int[NumeroDeNos()];
+        FazerPercursoOrder(resultado, raiz);
+        return resultado; 
+    }
+    
+    private void FazerPercursoOrder(int[] array, NoArvore _no)
+    {
+        if(_no != null)
+        {
+            FazerPercursoOrder(array, _no.getEsquerdo());
+            InserirNoArray(array, _no);
+            FazerPercursoOrder(array, _no.getDireito());
+        }
     }
 
     @Override
     public int[] postOrder() {
-        return new int[1]; 
+        int[] resultado = new int[NumeroDeNos()];
+        FazerPercursoPostOrder(resultado, raiz);
+        return resultado;
     }
     
-   
+    private void FazerPercursoPostOrder(int[] array, NoArvore _no)
+    {
+        if(_no != null)
+        {
+            FazerPercursoPostOrder(array, _no.getEsquerdo());            
+            FazerPercursoPostOrder(array, _no.getDireito());
+            InserirNoArray(array, _no);
+        }
+    }
     
     @Override
     public boolean isComplete() {
-        return true; 
+        //Se a quantidade de nos sem grau 2 for igual a 2^altura retorna verdadeiro
+        //Pois para ser completa, apenas as folhas devem ter menos do q grau 2.
+        if(ContarGraus(raiz) == (Math.pow(2, AlturaDaArvore())))
+           return true;
+        else
+           return false;
     }
     
+    public int ContarGraus(NoArvore _no) //Retorna a soma dos nos que não possi grau 2.
+    { 
+        if((_no.getEsquerdo() == null) || (_no.getDireito() == null)) //Verifica se o nó não tem grau 2.
+            return 1;
+ 
+        int grausEsquerda = ContarGraus(_no.getEsquerdo());
+        int grausDireita = ContarGraus(_no.getDireito());
+        
+        return grausEsquerda + grausDireita;
+    }
+            
     public int AlturaDaArvore()
     {
         return AuxParaCalcularAltura(raiz);
