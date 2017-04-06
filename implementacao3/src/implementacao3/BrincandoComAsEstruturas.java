@@ -74,7 +74,6 @@ public class BrincandoComAsEstruturas {
 		System.out.println(Arrays.toString(arvore1.postOrder()).equals(Arrays.toString(new int[]{1,3,2,5,7,6,4,9,11,10,13,15,14,12,8})));
                 System.out.println();
 		
-		
 		System.out.println("Brincando com MaxHeap...");
 		ArvoreBinaria_IF arvore2 = new MaxHeap();
 		arvore2.insert(8);
