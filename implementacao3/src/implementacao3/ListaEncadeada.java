@@ -63,7 +63,7 @@ public class ListaEncadeada implements ListaEncadeada_IF
             aux.dado = dado;
             aux.proximo = proximo;
             dado = element;
-            proximo = aux;          
+            proximo = aux;   
         }
     }
     
