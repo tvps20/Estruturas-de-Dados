@@ -114,7 +114,7 @@ public class BST implements ArvoreBinaria_IF {
         int grausDireita = ContarFolhas(_no.getDireito());
         
         return grausEsquerda + grausDireita;
-    }
+}
             
     public int AlturaDaArvore()
     {
