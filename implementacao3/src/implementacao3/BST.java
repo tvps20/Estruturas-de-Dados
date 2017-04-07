@@ -97,8 +97,8 @@ public class BST implements ArvoreBinaria_IF {
     
     @Override
     public boolean isComplete() {
-        //Se a quantidade de nos sem grau 2(serão as folhas) for igual a 2^altura retorna verdadeiro
-        //Pois para ser completa, apenas as folhas devem ter menos do q grau 2.
+        //Se a quantidade de folhas for igual a 2^altura do nivel retorna verdadeiro.
+        //Pois para ser completa, todos os niveis devem ser completos.
         if(ContarFolhas(raiz) == (Math.pow(2, AlturaDaArvore())))
            return true;
         else
@@ -106,15 +106,20 @@ public class BST implements ArvoreBinaria_IF {
     }
     
     public int ContarFolhas(NoArvore _no) //Retorna a soma dos nos que não possi grau 2.
-    { 
-        if((_no.getEsquerdo() == null) || (_no.getDireito() == null)) //Verifica se o nó não tem grau 2.
-            return 1;
- 
-        int grausEsquerda = ContarFolhas(_no.getEsquerdo());
-        int grausDireita = ContarFolhas(_no.getDireito());
+    {
+        if(_no != null)
+        {
+            if((_no.getEsquerdo() == null) && (_no.getDireito() == null)) //Verifica se é folha.
+                return 1;       
+
+            int grausEsquerda = ContarFolhas(_no.getEsquerdo());
+            int grausDireita = ContarFolhas(_no.getDireito());
+
+            return grausEsquerda + grausDireita;
+        }
         
-        return grausEsquerda + grausDireita;
-}
+        return 0;
+    }
             
     public int AlturaDaArvore()
     {
