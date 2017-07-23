@@ -1,7 +1,7 @@
 package implementacao3;
 
 /*
- * Interface para implementação da classe "BST" e da classe "MaxHeap"
+ * Interface para implementao da classe "BST" e da classe "MaxHeap"
  */
 public interface ArvoreBinaria_IF {
 	public void insert(int element);

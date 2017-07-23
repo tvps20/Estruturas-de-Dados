@@ -1,13 +1,13 @@
 package implementacao3;
 
 /*
- * Interface para implementação da classe "TabelaHash", a qual deve
- * ser implementada usando endereçamento fechado e o método da divisão
+ * Interface para implementao da classe "TabelaHash", a qual deve
+ * ser implementada usando endereï¿½amento fechado e o mï¿½todo da divisï¿½o
  */
 public interface TabelaHash_IF {
 	public void insert(int element);
-	public void remove(int element) throws Exception; //lançar exceção caso o element não esteja na tabela
-	public int search(int element) throws Exception; //lançar exceção caso o element não esteja na tabela
+	public void remove(int element) throws Exception; //lanar exceo caso o element no esteja na tabela
+	public int search(int element) throws Exception; //lanar exceo caso o element no esteja na tabela
 	public String print();
 	
 	/*

@@ -115,7 +115,7 @@ public class BrincandoComAsEstruturas {
                 System.out.println();
 		
 		
-		System.out.println("Brincando com TabelaHash...");
+		/*System.out.println("Brincando com TabelaHash...");
 		TabelaHash_IF tabela = new TabelaHash(8);
 		System.out.println(tabela.print().equals("0: \n1: \n2: \n3: \n4: \n5: \n6: \n7: "));
 		for (int key = 1; key < 25; key++) {
@@ -131,7 +131,7 @@ public class BrincandoComAsEstruturas {
 		
 		
 		
-		//OBS.: Espera-se que nenhum print mostre 'false' na tela!
+		//OBS.: Espera-se que nenhum print mostre 'false' na tela!*/
 		
 	}
 	
