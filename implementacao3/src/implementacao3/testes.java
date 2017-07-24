@@ -3,7 +3,12 @@ package implementacao3;
 public class testes {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        int i = Integer.MAX_VALUE;
+        System.out.println("i=" + i++);
+        System.out.println("i=" + i++);
+        System.out.println("i=" + i++);
+        
     }
     
 }
