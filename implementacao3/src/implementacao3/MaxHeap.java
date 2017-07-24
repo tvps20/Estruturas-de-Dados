@@ -77,12 +77,12 @@ public class MaxHeap implements ArvoreBinaria_IF {
     @Override
     public void insert(int element) {
         
-        //if(tamanho == 0)
+        if(tamanho == 0)
         {
-            //Heap[tamanho] = element;
-            //tamanho++;
+            Heap[tamanho] = element;
+            tamanho++;
         }
-        //else{
+        else{
             int[] novoArray = AumentarArray(Heap);
             Heap = novoArray;
 
@@ -95,7 +95,7 @@ public class MaxHeap implements ArvoreBinaria_IF {
                 Troca(atual, Pai(atual));
                 atual = Pai(atual);
             }
-        //}
+        }
     }
     
     private int[] AumentarArray(int[] array)
@@ -130,10 +130,10 @@ public class MaxHeap implements ArvoreBinaria_IF {
 
     @Override
     public boolean isComplete() {
-        double qtdMaxElemento = (Math.log(Heap.length)/Math.log(2))-1;
+        double qtdMaxElemento = (Math.log(Heap.length +1)/Math.log(2))-1;
         int aux = (int) qtdMaxElemento;
         
-        if(Math.pow(2, aux) >= Heap.length-2)
+        if((Math.pow(2, aux +1)-1) == Heap.length)
             return true;
         else
             return false;
