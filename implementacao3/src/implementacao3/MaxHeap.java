@@ -15,13 +15,13 @@ public class MaxHeap implements ArvoreBinaria_IF {
     private int tamanho;
     private int tamanhoMaximo;
     
-    private static final int FRONT = 1;
+    private static final int Cabeca = 1;
 
-    public MaxHeap() {
-        this.tamanhoMaximo = 1;
+    public MaxHeap() { 
+        this.tamanhoMaximo = 0;
         this.tamanho = 0;
-        Heap = new int[this.tamanhoMaximo];
-        //Heap[0] = Integer.MAX_VALUE;
+        Heap = new int[this.tamanhoMaximo +1];
+        Heap[0] = Integer.MAX_VALUE;
     }
     
     private int Pai(int posicao)
@@ -77,25 +77,25 @@ public class MaxHeap implements ArvoreBinaria_IF {
     @Override
     public void insert(int element) {
         
-        if(tamanho == 0)
+        /*if(tamanho == 0)
         {
             Heap[tamanho] = element;
             tamanho++;
         }
-        else{
+        else{*/
             int[] novoArray = AumentarArray(Heap);
             Heap = novoArray;
 
-            Heap[tamanho] = element;
-            tamanho++;
-            int atual = tamanho -1;
+            Heap[++tamanho] = element;
+            //tamanho++;
+            int atual = tamanho;
 
             while(Heap[atual] > Heap[Pai(atual)])
             {
                 Troca(atual, Pai(atual));
                 atual = Pai(atual);
-            }
-        }
+            }            
+       // }
     }
     
     private int[] AumentarArray(int[] array)
@@ -130,12 +130,50 @@ public class MaxHeap implements ArvoreBinaria_IF {
 
     @Override
     public boolean isComplete() {
-        double qtdMaxElemento = (Math.log(Heap.length +1)/Math.log(2))-1;
+        int[] arrayAux = RemoverInteger();
+        double qtdMaxElemento = (Math.log(arrayAux.length +1)/Math.log(2))-1;
         int aux = (int) qtdMaxElemento;
         
-        if((Math.pow(2, aux +1)-1) == Heap.length)
+        if((Math.pow(2, aux +1)-1) == arrayAux.length)
             return true;
         else
             return false;
     }   
+    
+    public void print()
+    {
+        for(int i=1; i<= (tamanho/2); i++)
+        {
+            System.out.print("Pai: " + Heap[i] + " Filho Esquerdo: " + Heap[(2*i)] + " Filho Direiro: " + Heap[(2*i)+1]);
+            System.out.println();
+        }
+    }
+    
+    public void MaxHeap()
+    {
+        for(int posicao = (tamanho/2); posicao >= 1; posicao--)
+        {
+            MaxHeapify(posicao);
+        }
+    }
+    
+    public int Remover()
+    {
+        int removido = Heap[Cabeca];
+        Heap[Cabeca] = Heap[tamanho--];
+        MaxHeapify(Cabeca);
+        return removido;
+    }
+    
+    private int[] RemoverInteger()
+    {
+        int[] novoArray = new int[Heap.length-1];
+        
+        for(int i=0; i<novoArray.length; i++)
+        {
+            novoArray[i] = Heap[i+1];
+        }
+        
+        return novoArray;
+    }
 }
