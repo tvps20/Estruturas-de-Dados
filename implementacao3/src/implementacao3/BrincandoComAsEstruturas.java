@@ -113,7 +113,7 @@ public class BrincandoComAsEstruturas {
 		System.out.println(Arrays.toString(arvore2.order()).equals(Arrays.toString(new int[]{8,13,3,14,4,7,6,15,2,10,9,12,1,11,5})));
 		System.out.println(Arrays.toString(arvore2.postOrder()).equals(Arrays.toString(new int[]{8,3,13,4,6,7,14,2,9,10,1,5,11,12,15})));
                 System.out.println();
-		
+                	
 		
 		/*System.out.println("Brincando com TabelaHash...");
 		TabelaHash_IF tabela = new TabelaHash(8);
