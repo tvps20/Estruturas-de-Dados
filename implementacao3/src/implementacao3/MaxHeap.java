@@ -76,26 +76,17 @@ public class MaxHeap implements ArvoreBinaria_IF {
 
     @Override
     public void insert(int element) {
-        
-        /*if(tamanho == 0)
+        int[] novoArray = AumentarArray(Heap);
+        Heap = novoArray;
+
+        Heap[++tamanho] = element;
+        int atual = tamanho;
+
+        while(Heap[atual] > Heap[Pai(atual)])
         {
-            Heap[tamanho] = element;
-            tamanho++;
-        }
-        else{*/
-            int[] novoArray = AumentarArray(Heap);
-            Heap = novoArray;
-
-            Heap[++tamanho] = element;
-            //tamanho++;
-            int atual = tamanho;
-
-            while(Heap[atual] > Heap[Pai(atual)])
-            {
-                Troca(atual, Pai(atual));
-                atual = Pai(atual);
-            }            
-       // }
+            Troca(atual, Pai(atual));
+            atual = Pai(atual);
+        }            
     }
     
     private int[] AumentarArray(int[] array)
