@@ -18,7 +18,16 @@ public class testes {
         maxHeap.MaxHeap();
  
         maxHeap.print();
-        System.out.println("The max val is " + maxHeap.Remover());       
+        System.out.println("The max val is " + maxHeap.Remover());     
+        
+        System.out.println("Brincando com TabelaHash...");
+        TabelaHash_IF tabela = new TabelaHash(2);
+        
+        tabela.insert(1);
+        tabela.insert(2);
+        
+        //tabela.remove(0);
+        
     }
     
 }
