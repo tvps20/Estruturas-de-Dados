@@ -40,8 +40,9 @@ public class TabelaHash implements TabelaHash_IF {
         
         try
         {
+            TabelaHash[chave].search(element); 
             TabelaHash[chave].remove(element);
-        }
+        } 
         catch(Exception e)
         {
             throw new Exception("Elemento não encontrado");
@@ -65,7 +66,35 @@ public class TabelaHash implements TabelaHash_IF {
 
     @Override
     public String print() {
-        return "nada";
+        String text = "";
+        
+        for(int i=0; i<=TabelaHash.length -1; i++)
+        {
+            if(TabelaHash[i] != null)
+            {
+                int[] arrayDaVez = TabelaHash[i].toArray();           
+                text += i + ": ";
+
+                for(int j=0; j<=arrayDaVez.length-1; j++)
+                {
+                    if(j != arrayDaVez.length -1)                    
+                        text += arrayDaVez[j] + ", ";
+                    else
+                        text += arrayDaVez[j];                
+                }  
+
+                if(i != TabelaHash.length -1)
+                    text += "\n";  
+            }
+            else
+            {
+                if(i != TabelaHash.length -1)
+                    text += i + ": \n";
+                else
+                    text += i + ": ";
+            }
+        }     
+        return text;
     }
     
     private int FucaoHashing(int numero)

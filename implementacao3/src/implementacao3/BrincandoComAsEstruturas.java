@@ -131,8 +131,7 @@ public class BrincandoComAsEstruturas {
 		
 		
 		
-		//OBS.: Espera-se que nenhum print mostre 'false' na tela!
-		
+		//OBS.: Espera-se que nenhum print mostre 'false' na tela!		
 	}
 	
 

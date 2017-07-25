@@ -26,8 +26,10 @@ public class testes {
         tabela.insert(1);
         tabela.insert(2);
         
-        //tabela.remove(0);
-        
+  
+        System.out.println(tabela.print());
+
+             
     }
     
 }
