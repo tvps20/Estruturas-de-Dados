@@ -25,11 +25,18 @@ public class TabelaHash implements TabelaHash_IF {
     public void insert(int element) {
         chave = FucaoHashing(element);
         
-        if(TabelaHash[chave] != null)
-            TabelaHash[chave].InserirNoInicio(element);   
-        else
+        try
         {
-            TabelaHash[chave] = new ListaEncadeada();
+            if(TabelaHash[chave] == null) 
+            {
+                TabelaHash[chave] = new ListaEncadeada();
+                TabelaHash[chave].InserirNoInicio(element);                
+            }              
+            else if((TabelaHash[chave].search(element) == element))           
+                System.out.println("Elemento ja foi adicionado na tabela!");                                  
+        }
+        catch(Exception e)
+        {
             TabelaHash[chave].InserirNoInicio(element);
         }
     }
