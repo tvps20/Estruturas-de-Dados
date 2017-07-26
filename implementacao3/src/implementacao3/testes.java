@@ -2,7 +2,7 @@ package implementacao3;
 
 public class testes {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         
         System.out.println("The Max Heap is ");
         MaxHeap maxHeap = new MaxHeap();
@@ -25,7 +25,7 @@ public class testes {
         
         tabela.insert(1);
         tabela.insert(2);
-        
+        tabela.remove(2545);
   
         System.out.println(tabela.print());
 

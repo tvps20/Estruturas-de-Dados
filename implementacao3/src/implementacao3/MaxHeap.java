@@ -103,20 +103,65 @@ public class MaxHeap implements ArvoreBinaria_IF {
     
     @Override
     public int[] preOrder() {
-        int[] novo = new int[0];
-        return novo;
+        int[] percurso = new int[tamanho];
+        FazendoPercusoEmPreOrder(percurso, 1);    
+        return percurso;
+    }
+    
+    private void FazendoPercusoEmPreOrder(int[] array, int posicao)
+    {       
+        if(posicao <= tamanho)
+        {
+            InserirNoArray(array, Heap[posicao]);
+            FazendoPercusoEmPreOrder(array, FilhoEsquerdo(posicao));
+            FazendoPercusoEmPreOrder(array, FilhoDireito(posicao));
+        }
+    }
+    
+    private void InserirNoArray(int[] array, int element)
+    {
+        for(int i=0; i<array.length; i++)
+        {
+            if(array[i] == 0) //Corrigir isso, se o tiver um elemento 0 inserido, vai da problema.
+            {
+                array[i] = element;
+                break;
+            }
+        }
     }
 
     @Override
     public int[] order() {
-        int[] novo = new int[0];
-        return novo;
+        int[] percurso = new int[tamanho];
+        FazendoPercursoEmOrder(percurso, 1);
+        return percurso;
+    }
+    
+    private void FazendoPercursoEmOrder(int[] array, int posicao)
+    {
+        if(posicao <= tamanho)
+        {            
+            FazendoPercursoEmOrder(array, FilhoEsquerdo(posicao));
+            InserirNoArray(array, Heap[posicao]);
+            FazendoPercursoEmOrder(array, FilhoDireito(posicao));
+        }
     }
 
     @Override
     public int[] postOrder() {
-        int[] novo = new int[0];
-        return novo;
+        int[] percurso = new int[tamanho];
+        FazendoPercursoEmPosOrder(percurso, 1);
+        return percurso;      
+    }
+    
+    private void FazendoPercursoEmPosOrder(int[] array, int posicao)
+    {
+        if(posicao <= tamanho)
+        {            
+            FazendoPercursoEmPosOrder(array, FilhoEsquerdo(posicao));           
+            FazendoPercursoEmPosOrder(array, FilhoDireito(posicao));
+            InserirNoArray(array, Heap[posicao]);
+        }
     }
 
     @Override
